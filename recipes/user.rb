@@ -14,6 +14,7 @@
 
 group node["airflow"]["group"] do
   action :create
+  gid node['airflow']['gid']
   not_if "getent group #{node['airflow']['group']}"
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
@@ -26,6 +27,7 @@ user node['airflow']['user'] do
   shell "/bin/bash"
   manage_home true
   action :create
+  uid node['airflow']['uid']                           
   not_if "getent passwd #{node['airflow']['user']}"
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
