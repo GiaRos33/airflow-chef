@@ -5,7 +5,8 @@ my_ip = my_private_ip()
 hops_groups()
 
 group node['sqoop']['group'] do
-  action :create
+  action :create                           
+  gid node['sqoop']['gid']   
   not_if "getent group #{node['sqoop']['group']}"
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
@@ -14,6 +15,7 @@ user node['sqoop']['user'] do
   home "/home/#{node['sqoop']['user']}"
   gid node['sqoop']['group']
   action :create
+  uid node['sqoop']['uid']
   shell "/bin/bash"
   manage_home true
   not_if "getent passwd #{node['sqoop']['user']}"
