@@ -23,7 +23,8 @@ default['airflow']["version"]         = "1.10.10"
 default['airflow']['url']             = "#{node['download_url']}/apache/airflow/#{node['airflow']['version']}/constraints/constraints-3.7.txt"
 default['airflow']['user']            = node['install']['user'].empty? ? 'airflow' : node['install']['user']
 default['airflow']['group']           = node['install']['user'].empty? ? 'airflow' : node['install']['user']
-
+default['airflow']['uid']             = "10170"
+default['airflow']['gid']             = "10171"
 default['airflow']['mysql_user']      = "airflow_db"
 default['airflow']['mysql_password']  = "airflow_db"
 
