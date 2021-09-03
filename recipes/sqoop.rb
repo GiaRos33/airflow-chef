@@ -54,6 +54,7 @@ end
 #update hive group
 group 'hive' do
   action :modify
+  gid node default['hive2']['gid'] 
   members  ["#{node['sqoop']['user']}","#{node['hops']['hdfs']['user']}","#{node['airflow']['user']}"]
   append true
   not_if { node['install']['external_users'].casecmp("true") == 0 }
