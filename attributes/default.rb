@@ -25,6 +25,7 @@ default['airflow']['user']            = node['install']['user'].empty? ? 'airflo
 default['airflow']['group']           = node['install']['user'].empty? ? 'airflow' : node['install']['user']
 default['airflow']['uid']             = "10170"
 default['airflow']['gid']             = "10171"
+default['hive2']['gid']               = "10001"
 default['airflow']['mysql_user']      = "airflow_db"
 default['airflow']['mysql_password']  = "airflow_db"
 
